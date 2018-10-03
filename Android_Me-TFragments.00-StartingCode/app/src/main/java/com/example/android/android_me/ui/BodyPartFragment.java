@@ -11,7 +11,12 @@ import android.widget.ImageView;
 import com.example.android.android_me.R;
 import com.example.android.android_me.data.AndroidImageAssets;
 
+import java.util.List;
+
 public class BodyPartFragment extends Fragment {
+
+    private List<Integer> list;
+    private int id;
 
     public BodyPartFragment(){
 
@@ -26,8 +31,17 @@ public class BodyPartFragment extends Fragment {
 
         ImageView imageView = (ImageView) rootView.findViewById(R.id.body_part_image_view);
 
-        imageView.setImageResource(AndroidImageAssets.getBodies().get(0));
+        if(imageView != null && list!= null)
+            imageView.setImageResource(list.get(id));
 
         return rootView;
+    }
+
+    public void setList(List<Integer> list){
+        this.list=list;
+    }
+
+    public void setId(int id){
+        this.id=id;
     }
 }

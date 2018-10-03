@@ -21,6 +21,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.android.android_me.R;
+import com.example.android.android_me.data.AndroidImageAssets;
 
 // This activity will display a custom Android image composed of three body parts: head, body, and legs
 public class AndroidMeActivity extends AppCompatActivity {
@@ -33,15 +34,22 @@ public class AndroidMeActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         //HeadFragment
-        HeadPartFragment headFragment = new HeadPartFragment();
+        BodyPartFragment headFragment = new BodyPartFragment();
+        headFragment.setList(AndroidImageAssets.getHeads());
+        headFragment.setId(0);
         fragmentManager.beginTransaction().add(R.id.head_container, headFragment).commit();
 
         //Body fragment
         BodyPartFragment bodyFragment = new BodyPartFragment();
+        bodyFragment.setList(AndroidImageAssets.getBodies());
+        bodyFragment.setId(0);
         fragmentManager.beginTransaction().add(R.id.body_container, bodyFragment).commit();
 
         //Legs fragment
-        LegPartFragment legFragment = new LegPartFragment();
+        BodyPartFragment legFragment = new BodyPartFragment();
+        legFragment.setList(AndroidImageAssets.getLegs());
+        legFragment.setId(0);
         fragmentManager.beginTransaction().add(R.id.leg_container, legFragment).commit();
+
     }
 }
